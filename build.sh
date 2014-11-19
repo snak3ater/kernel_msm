@@ -1,3 +1,12 @@
+#!/bin/bash
+
+make clean
+make mrproper
+export ARCH=arm
+export SUBARCH=arm
+version="1"
+make mako_defconfig
+
 if [ $# -gt 0 ]; then
 echo $1 > .version
 fi
@@ -29,3 +38,8 @@ rm -f *.zip
 zip -r $zipfile *
 rm -f /tmp/*.zip
 cp *.zip /tmp
+mv *.zip /home/avinash/Android/FlashZip
+
+rm -rf boot.img
+rm -rf ../boot.img
+
